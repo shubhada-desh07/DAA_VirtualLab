@@ -666,15 +666,7 @@ public class PrimsVirtualLab extends JFrame {
         candidateEdge = new int[]{x, y};
         graphPanel.repaint(); // Trigger redraw to show orange edge
 
-        /*
-         * WHY final copies?
-         * -----------------
-         * Java lambdas (and anonymous classes) can only capture local variables
-         * that are "effectively final" — i.e., never reassigned after declaration.
-         * x, y, and min were mutated inside the for-loops above, so the compiler
-         * rejects them inside the lambda. We copy their final values here so the
-         * lambda can safely close over them.
-         */
+    
         final int fx = x;     // Final copy of source node index
         final int fy = y;     // Final copy of destination node index
         final int fmin = min; // Final copy of the minimum edge weight
@@ -782,7 +774,7 @@ public class PrimsVirtualLab extends JFrame {
 
     // =========================================================
     // STATISTICS UPDATE
-    // =========================================================
+ 
 
     /**
      * updateStats() — Refreshes all stat labels in the sidebar.
